@@ -1,0 +1,18 @@
+  class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        if rowIndex==0:
+            return [1]
+        elif rowIndex==1:
+            return [1,1]
+        else:
+            pascal=[[1],[1,1]]
+
+            for _ in range(rowIndex-1):
+                temp=[]
+                temp.append(1)
+                for i in range(len(pascal[-1])-1):
+                    temp.append(pascal[-1][i]+pascal[-1][i+1])
+                temp.append(1)
+                pascal.append(temp)
+
+            return pascal[rowIndex]
